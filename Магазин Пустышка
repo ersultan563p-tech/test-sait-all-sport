@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин Пустышка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #2d82ff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+
+        .products {
+            width: 70%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00000020;
+            text-align: center;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        button {
+            background: #2d82ff;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1f62c0;
+        }
+
+        .cart {
+            width: 30%;
+            background: white;
+            margin-left: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px #00000020;
+            border-radius: 10px;
+        }
+
+        .cart-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .total {
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Магазин Пустышка — тестовый сайт
+</header>
+
+<div class="container">
+
+    <div class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h3>Товар 1</h3>
+            <p>Цена: 500 ₽</p>
+            <button onclick="addToCart('Товар 1', 500)">Добавить</button>
+        </div>
+
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h3>Товар 2</h3>
+            <p>Цена: 750 ₽</p>
+            <button onclick="addToCart('Товар 2', 750)">Добавить</button>
+        </div>
+
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h3>Товар 3</h3>
+            <p>Цена: 999 ₽</p>
+            <button onclick="addToCart('Товар 3', 999)">Добавить</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Корзина</h2>
+        <div id="cart-items"></div>
+        <div class="total">Итого: <span id="total">0</span> ₽</div>
+    </div>
+
+</div>
+
+<script>
+    let total = 0;
+
+    function addToCart(name, price) {
+        const cart = document.getElementById("cart-items");
+        const item = document.createElement("div");
+        item.className = "cart-item";
+        item.textContent = name + " — " + price + " ₽";
+        cart.appendChild(item);
+
+        total += price;
+        document.getElementById("total").textContent = total;
+    }
+</script>
+
+</body>
+</html>
